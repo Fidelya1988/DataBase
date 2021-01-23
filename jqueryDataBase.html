@@ -60,20 +60,25 @@
 </body>
 
 <script>
-    let DataBase = function (id, name, lastName, phoneNumber, city) {
-        this.id = id;
+    
+    let Person = function (name, lastName, phoneNumber, city) {
+        this.id = Math.floor(Math.random()*10000);
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
 
     }
-    function toCreateLine() {
+    Person.prototype.toCreateLine = function () {
         let line = $("#table tr:last").after("<tr><td>my data</td><td>more data</td><td>more data</td><td>more data</td><td>more data</td></tr>");
         return line;
+        
     };
+     
+    const dima = new Person("Dima", "Parzitsky", 097777, "Kyiv");
 
-
-
+dima.toCreateLine();
+const oleksandra = new Person("Oleksandra", "MArchenko", 0962783865, "Kyiv");
+oleksandra.toCreateLine();
 
 
  
