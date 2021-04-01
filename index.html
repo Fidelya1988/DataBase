@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+   <link rel="stylesheet" href="./form.css">
     <style>
         table {
             width: 100%;
@@ -37,25 +37,37 @@
 </head>
 
 <body>
-    <table id="table">
-        <caption>
+ <form action="" method="post">
+    
+         <label> Name: <input type="text" name="name" id="name" class="input-area"></label>
+         <label> Last Name: <input type="text" name="last-name" id="last-name" class="input-area"></label>
+         <label> Phone Number: <input type="text" name="phone-number" id="phone-number" class="input-area"></label>
+         <label> City: <input type="text" name="city" id="city" class="input-area"></label>
+         <input type = "submit" value = "Add New User" class="submit-button"/>
+ </form>
 
-        </caption>
+
+    <table id="table">
+      
         <tr>
             <th>Name</th>
-            <th>Laste Name</th>
+            <th>Last Name</th>
             <th>Phone Number</th>
             <th>User ID</th>
             <th>City</th>
         </tr>
 
-        <!-- <tr id="line">
-            <td>Test User</td>
-            <td>М</td>
-            <td>3333333333</td>
-            <td>1</td>
-            <td>New York</td>
-        </tr> -->
+        <template id="template-table">
+           <tr class="template-line">
+            <td class = "line-name">Test User</td>
+            <td class = "line-last-name">М</td>
+            <td class = "line-phone">3333333333</td>
+            <td class = "line-id">1</td>
+            <td class = "line-city">New York</td>
+        </tr>
+          </template>
+
+     
     </table>
     
     
