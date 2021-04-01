@@ -1,5 +1,5 @@
 let form = document.querySelector('form');
-let inputArea = form.querySelector('.input-area');
+let inputAreas = document.querySelectorAll('.input-area');
 let submitButton = form.querySelector('.submit-button');
 let table = document.querySelector('#table');
 let templateTable = document.querySelector('#template-table').content;
@@ -9,7 +9,7 @@ let rowName = templateRow.querySelector('.row-name');
 let rowLastName = templateRow.querySelector('.row-last-name');
 let rowPhone = templateRow.querySelector('.row-phone');
 let rowCity = templateRow.querySelector('.row-city');
-
+console.log(inputAreas)
 let User = function (id, name, lastName, phone, city) {
 
 
@@ -50,8 +50,11 @@ submitButton.addEventListener('click', evt => {
    
     let newRow = templateRow.cloneNode(true);
     table.appendChild(newRow);
-
-
+ 
+    for (let i = 0; i<inputAreas.length; i++) {
+       
+        inputAreas[i].value = '';
+    }
 
 
 
