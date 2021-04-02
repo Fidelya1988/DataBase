@@ -1,17 +1,16 @@
 let form = document.querySelector("form");
-let inputName = form.querySelector("#name");
-let inputLastName = form.querySelector("#last-name");
-let inputPhone = form.querySelector("#phone-number");
-let inputCity = form.querySelector("#city");
+let inputName = form.querySelector("input.name");
+let inputLastName = form.querySelector("input.last-name");
+let inputPhone = form.querySelector("input.phone");
+let inputCity = form.querySelector("input.city");
 
 let table = document.querySelector("#table");
-let templateTable = document.querySelector("#template-table").content;
-let templateRow = templateTable.querySelector(".template-row");
-let rowId = templateRow.querySelector(".row-id");
-let rowName = templateRow.querySelector(".row-name");
-let rowLastName = templateRow.querySelector(".row-last-name");
-let rowPhone = templateRow.querySelector(".row-phone");
-let rowCity = templateRow.querySelector(".row-city");
+let tableRowTemplate = document.querySelector("#table-row").content;
+let templateCellId = tableRowTemplate.querySelector("td.id");
+let templateCellName = tableRowTemplate.querySelector("td.name");
+let templateCellLastName = tableRowTemplate.querySelector("td.last-name");
+let templateCellPhone = tableRowTemplate.querySelector("td.phone");
+let templateCellCity = tableRowTemplate.querySelector("td.city");
 
 class User {
     constructor(id, name, lastName, phone, city) {
@@ -24,11 +23,11 @@ class User {
 }
 
 const renderRow = (newUser) => {
-    rowId.textContent = newUser.id;
-    rowName.textContent = newUser.name;
-    rowLastName.textContent = newUser.lastName;
-    rowPhone.textContent = newUser.phone;
-    rowCity.textContent = newUser.city;
+    templateCellId.textContent = newUser.id;
+    templateCellName.textContent = newUser.name;
+    templateCellLastName.textContent = newUser.lastName;
+    templateCellPhone.textContent = newUser.phone;
+    templateCellCity.textContent = newUser.city;
 };
 
 let users = [];
@@ -46,7 +45,7 @@ form.addEventListener("submit", (evt) => {
     renderRow(newUser);
     users.push(newUser);
 
-    let newRow = templateRow.cloneNode(true);
+    let newRow = tableRowTemplate.cloneNode(true);
     table.appendChild(newRow);
     form.reset();
 });
