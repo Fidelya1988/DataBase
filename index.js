@@ -28,12 +28,16 @@ class User {
     }
 }
 
-const renderRow = (newUser) => {
+const createRow = (newUser) => {
+    // populate template cells with new content
     templateCellId.textContent = newUser.id;
     templateCellName.textContent = newUser.name;
     templateCellLastName.textContent = newUser.lastName;
     templateCellPhone.textContent = newUser.phone;
     templateCellCity.textContent = newUser.city;
+
+    // return a deep copy of the row
+    return tableRowTemplate.cloneNode(true);
 };
 
 form.addEventListener("submit", (evt) => {
@@ -45,10 +49,9 @@ form.addEventListener("submit", (evt) => {
         inputPhone.value,
         inputCity.value,
     );
-    renderRow(newUser);
     users.push(newUser);
 
-    let newRow = tableRowTemplate.cloneNode(true);
+    let newRow = createRow(user);
     table.appendChild(newRow);
     form.reset();
 });
