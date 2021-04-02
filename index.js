@@ -44,7 +44,7 @@ form.addEventListener("submit", (evt) => {
     );
     users.push(newUser);
 
-    let newRow = createRow(user);
+    let newRow = createRow(newUser);
     table.appendChild(newRow);
     form.reset();
 });
