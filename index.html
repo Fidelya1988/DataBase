@@ -13,7 +13,6 @@
             border: 4px double black;
             /* Рамка вокруг таблицы */
             border-collapse: collapse;
-
             /* Отображать только одинарные линии */
         }
 
@@ -39,17 +38,22 @@
 
 <body>
     <form action="" method="post">
-
-        <label> Name: <input type="text" name="name" id="name" class="input-area"></label>
-        <label> Last Name: <input type="text" name="last-name" id="last-name" class="input-area"></label>
-        <label> Phone Number: <input type="text" name="phone-number" id="phone-number" class="input-area"></label>
-        <label> City: <input type="text" name="city" id="city" class="input-area"></label>
+        <label>
+            Name: <input type="text" name="name" id="name" class="input-area">
+        </label>
+        <label>
+            Last Name: <input type="text" name="last-name" id="last-name" class="input-area">
+        </label>
+        <label>
+            Phone Number: <input type="text" name="phone-number" id="phone-number" class="input-area">
+        </label>
+        <label>
+            City: <input type="text" name="city" id="city" class="input-area">
+        </label>
         <input type="submit" value="Add New User" class="submit-button" />
     </form>
 
-
     <table id="table">
-
         <tr>
             <th>Name</th>
             <th>Last Name</th>
@@ -60,7 +64,6 @@
 
         <template id="template-table">
             <tr class="template-row">
-                
                 <td class="row-name">Test User</td>
                 <td class="row-last-name">М</td>
                 <td class="row-phone">3333333333</td>
@@ -68,16 +71,9 @@
                 <td class="row-city">New York</td>
             </tr>
         </template>
-
-
     </table>
-
 
     <script src="http://code.jquery.com/jquery-2.1.0.js"></script>
     <script src="index.js"></script>
 </body>
-
-
-
-
 </html>
