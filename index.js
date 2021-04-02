@@ -6,11 +6,7 @@ let inputCity = form.querySelector("input.city");
 
 let table = document.querySelector("#table");
 let tableRowTemplate = document.querySelector("#table-row").content;
-let templateCellId = tableRowTemplate.querySelector("td.id");
-let templateCellName = tableRowTemplate.querySelector("td.name");
-let templateCellLastName = tableRowTemplate.querySelector("td.last-name");
-let templateCellPhone = tableRowTemplate.querySelector("td.phone");
-let templateCellCity = tableRowTemplate.querySelector("td.city");
+let templateCells = tableRowTemplate.querySelectorAll("td");
 
 let users = [];
 
@@ -30,11 +26,8 @@ class User {
 
 const createRow = (newUser) => {
     // populate template cells with new content
-    templateCellId.textContent = newUser.id;
-    templateCellName.textContent = newUser.name;
-    templateCellLastName.textContent = newUser.lastName;
-    templateCellPhone.textContent = newUser.phone;
-    templateCellCity.textContent = newUser.city;
+    for (const cell of templateCells)
+        cell.textContent = newUser[cell.dataset.userPropertyKey];
 
     // return a deep copy of the row
     return tableRowTemplate.cloneNode(true);
