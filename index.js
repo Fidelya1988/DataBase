@@ -1,5 +1,10 @@
 let form = document.querySelector("form");
 let inputAreas = document.querySelectorAll(".input-area");
+let inputName = form.querySelector("#name");
+let inputLastName = form.querySelector("#last-name");
+let inputPhone = form.querySelector("#phone-number");
+let inputCity = form.querySelector("#city");
+
 let table = document.querySelector("#table");
 let templateTable = document.querySelector("#template-table").content;
 let templateRow = templateTable.querySelector(".template-row");
@@ -30,17 +35,12 @@ let users = [];
 form.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    let inputName = form.querySelector("#name").value;
-    let inputLastName = form.querySelector("#last-name").value;
-    let inputPhone = form.querySelector("#phone-number").value;
-    let inputCity = form.querySelector("#city").value;
-
     let newUser = new User(
         users.length + 1,
-        inputName,
-        inputLastName,
-        inputPhone,
-        inputCity
+        inputName.value,
+        inputLastName.value,
+        inputPhone.value,
+        inputCity.value,
     );
     renderRow(newUser);
     users.push(newUser);
