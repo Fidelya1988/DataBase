@@ -1,6 +1,5 @@
 let form = document.querySelector("form");
 let inputAreas = document.querySelectorAll(".input-area");
-let submitButton = form.querySelector(".submit-button");
 let table = document.querySelector("#table");
 let templateTable = document.querySelector("#template-table").content;
 let templateRow = templateTable.querySelector(".template-row");
@@ -28,7 +27,7 @@ const renderRow = (newUser) => {
 
 let users = [];
 
-submitButton.addEventListener("click", (evt) => {
+form.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
     let inputName = form.querySelector("#name").value;
