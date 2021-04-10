@@ -4,15 +4,15 @@ const inputLastName = form.querySelector("input.last-name");
 const inputPhone = form.querySelector("input.phone");
 const inputCity = form.querySelector("input.city");
 
-const tbody = document.querySelector("#tbody");
+const table = document.querySelector("#table");
 const tableRowTemplate = document.querySelector("#table-row").content;
 const templateCells = tableRowTemplate.querySelectorAll("td");
 
-const users = {};
+const users = [];
 
 class User {
     static createID() {
-        return Math.random().toString().slice(2);
+        return users.length + 1;
     }
 
     constructor(name, lastName, phone, city) {
@@ -30,11 +30,7 @@ const createRow = (newUser) => {
         cell.textContent = newUser[cell.dataset.userPropertyKey];
 
     // return a deep copy of the row
-    const row = tableRowTemplate.cloneNode(true).querySelector(".user-row");
-
-    row.dataset.userId = newUser.id;
-
-    return row;
+    return tableRowTemplate.cloneNode(true);
 };
 
 form.addEventListener("submit", (evt) => {
@@ -46,21 +42,9 @@ form.addEventListener("submit", (evt) => {
         inputPhone.value,
         inputCity.value,
     );
-
-    const id = newUser.id;
-
-    users[id] = newUser;
+    users.push(newUser);
 
     const newRow = createRow(newUser);
-    tbody.appendChild(newRow);
+    table.appendChild(newRow);
     form.reset();
-});
-
-tbody.addEventListener("click", (event) => {
-    // this forbids putting tables inside tables
-    const row = event.target.closest("tr");
-
-    const user = users[row.dataset.userId];
-
-    console.log({ user });
 });

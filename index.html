@@ -30,23 +30,18 @@
         <button type="submit">Add New User</button>
     </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Phone Number</th>
-                <th>User ID</th>
-                <th>City</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
-            <!-- ... -->
-        </tbody>
+    <table id="table">
+        <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>User ID</th>
+            <th>City</th>
+        </tr>
     </table>
 
     <template id="table-row">
-        <tr class="user-row">
+        <tr>
             <td class="name" data-user-property-key="name">Test User</td>
             <td class="last-name" data-user-property-key="lastName">М</td>
             <td class="phone" data-user-property-key="phone">3333333333</td>
