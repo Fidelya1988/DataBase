@@ -1,14 +1,14 @@
-const form = document.querySelector("form");
-const inputName = form.querySelector("input.name");
-const inputLastName = form.querySelector("input.last-name");
-const inputPhone = form.querySelector("input.phone");
-const inputCity = form.querySelector("input.city");
+let form = document.querySelector("form");
+let inputName = form.querySelector("input.name");
+let inputLastName = form.querySelector("input.last-name");
+let inputPhone = form.querySelector("input.phone");
+let inputCity = form.querySelector("input.city");
 
-const table = document.querySelector("#table");
-const tableRowTemplate = document.querySelector("#table-row").content;
-const templateCells = tableRowTemplate.querySelectorAll("td");
+let table = document.querySelector("#table");
+let tableRowTemplate = document.querySelector("#table-row").content;
+let templateCells = tableRowTemplate.querySelectorAll("td");
 
-const users = [];
+let users = [];
 
 class User {
     static createID() {
@@ -36,7 +36,7 @@ const createRow = (newUser) => {
 form.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    const newUser = new User(
+    let newUser = new User(
         inputName.value,
         inputLastName.value,
         inputPhone.value,
@@ -44,7 +44,7 @@ form.addEventListener("submit", (evt) => {
     );
     users.push(newUser);
 
-    const newRow = createRow(newUser);
+    let newRow = createRow(newUser);
     table.appendChild(newRow);
     form.reset();
 });
