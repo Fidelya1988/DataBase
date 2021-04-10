@@ -1,4 +1,5 @@
 let form = document.querySelector("form");
+let inputAreas = document.querySelectorAll(".input-area");
 let inputName = form.querySelector("#name");
 let inputLastName = form.querySelector("#last-name");
 let inputPhone = form.querySelector("#phone-number");
@@ -46,5 +47,8 @@ form.addEventListener("submit", (evt) => {
 
     let newRow = templateRow.cloneNode(true);
     table.appendChild(newRow);
-    form.reset();
+
+    for (let i = 0; i < inputAreas.length; i++) {
+        inputAreas[i].value = "";
+    }
 });
