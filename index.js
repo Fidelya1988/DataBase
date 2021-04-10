@@ -59,12 +59,8 @@ form.addEventListener("submit", (evt) => {
 tbody.addEventListener("click", (event) => {
     // this forbids putting tables inside tables
     const row = event.target.closest("tr");
+
     const user = users[row.dataset.userId];
 
-    // TODO: add popup form
-    user.name = prompt("Set new user name:", user.name) || user.name;
-
-    const nameCell = row.querySelector(".name");
-
-    nameCell.textContent = user.name;
+    console.log({ user });
 });
