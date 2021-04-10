@@ -13,19 +13,19 @@
     <form>
         <label>
             Name:
-            <input type="text" name="name" class="name">
+            <input type="text" name="name" id="name">
         </label>
         <label>
             Last Name:
-            <input type="text" name="last-name" class="last-name">
+            <input type="text" name="last-name" id="last-name">
         </label>
         <label>
             Phone Number:
-            <input type="text" name="phone" class="phone">
+            <input type="text" name="phone-number" id="phone-number">
         </label>
         <label>
             City:
-            <input type="text" name="city" class="city">
+            <input type="text" name="city" id="city">
         </label>
         <button type="submit">Add New User</button>
     </form>
@@ -40,13 +40,13 @@
         </tr>
     </table>
 
-    <template id="table-row">
-        <tr>
-            <td class="name">Test User</td>
-            <td class="last-name">М</td>
-            <td class="phone">3333333333</td>
-            <td class="id">1</td>
-            <td class="city">New York</td>
+    <template id="template-table">
+        <tr class="template-row">
+            <td class="row-name">Test User</td>
+            <td class="row-last-name">М</td>
+            <td class="row-phone">3333333333</td>
+            <td class="row-id">1</td>
+            <td class="row-city">New York</td>
         </tr>
     </template>
 
