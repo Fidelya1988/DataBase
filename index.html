@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form>
+    <form id = "add-user-form">
         <label>
             Name:
             <input type="text" name="name" class="name">
@@ -29,7 +29,26 @@
         </label>
         <button type="submit">Add New User</button>
     </form>
-
+   
+    <form id = "change-user-form">
+        <label>
+            Name:
+            <input type="text" name="name" class="name">
+        </label>
+        <label>
+            Last Name:
+            <input type="text" name="last-name" class="last-name">
+        </label>
+        <label>
+            Phone Number:
+            <input type="text" name="phone" class="phone">
+        </label>
+        <label>
+            City:
+            <input type="text" name="city" class="city">
+        </label>
+        <button type="submit">Save changed</button>
+    </form>
     <table>
         <thead>
             <tr>
