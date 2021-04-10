@@ -12,15 +12,9 @@ let templateCellLastName = tableRowTemplate.querySelector("td.last-name");
 let templateCellPhone = tableRowTemplate.querySelector("td.phone");
 let templateCellCity = tableRowTemplate.querySelector("td.city");
 
-let users = [];
-
 class User {
-    static createID() {
-        return users.length + 1;
-    }
-
-    constructor(name, lastName, phone, city) {
-        this.id = User.createID();
+    constructor(id, name, lastName, phone, city) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;
@@ -36,10 +30,13 @@ const renderRow = (newUser) => {
     templateCellCity.textContent = newUser.city;
 };
 
+let users = [];
+
 form.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
     let newUser = new User(
+        users.length + 1,
         inputName.value,
         inputLastName.value,
         inputPhone.value,
