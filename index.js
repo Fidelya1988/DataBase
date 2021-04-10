@@ -13,15 +13,13 @@ let rowLastName = templateRow.querySelector(".row-last-name");
 let rowPhone = templateRow.querySelector(".row-phone");
 let rowCity = templateRow.querySelector(".row-city");
 
-class User {
-    constructor(id, name, lastName, phone, city) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.city = city;
-    }
-}
+let User = function (id, name, lastName, phone, city) {
+    this.id = id;
+    this.name = name;
+    this.lastName = lastName;
+    this.phone = phone;
+    this.city = city;
+};
 
 const renderRow = (newUser) => {
     rowId.textContent = newUser.id;
