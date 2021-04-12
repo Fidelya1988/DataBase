@@ -24,3 +24,23 @@ td {
     border: 1px solid black;
     /* Граница вокруг ячеек */
 }
+
+.disabled-background {
+    background-color: rgb(233, 232, 232);
+    color:rgb(126, 120, 120)
+    
+}
+
+.disabled-background table td  {
+    border: 1px solid rgb(180, 180, 180);
+    pointer-events: none; 
+}
+.disabled-background table th  {
+    border: 1px solid rgb(180, 180, 180);
+    pointer-events: none; 
+
+}
+.selected { 
+    background-color: rgb(246, 248, 105);
+    color: black;
+}

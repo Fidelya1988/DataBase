@@ -47,12 +47,15 @@
             City:
             <input type="text" name="city" class="city" data-input-property-key="city">
         </label>
-        <button type="submit">Save changes</button>
-        <button type="click">Cancel</button>
+        <button type="submit" class = "change-button">Save changes</button>
+        <button type="click" class = "delete-button">Delete user</button>
+        <button type="click" class = "cancel-button">Cancel</button>
+       
     </form>
     <table>
         <thead>
             <tr>
+                
                 <th>Name</th>
                 <th>Last Name</th>
                 <th>Phone Number</th>
@@ -67,6 +70,7 @@
 
     <template id="table-row">
         <tr class="user-row">
+            
             <td class="name" data-user-property-key="name">Test User</td>
             <td class="last-name" data-user-property-key="lastName">М</td>
             <td class="phone" data-user-property-key="phone">3333333333</td>

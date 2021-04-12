@@ -1,11 +1,16 @@
+const body = document.querySelector('body')
+const tbody = document.querySelector("#tbody");
+const tableRowTemplate = document.querySelector("#table-row").content;
+
 const addUserForm = document.querySelector("#add-user-form");
 const inputName = addUserForm.querySelector("input.name");
 const inputLastName = addUserForm.querySelector("input.last-name");
 const inputPhone = addUserForm.querySelector("input.phone");
 const inputCity = addUserForm.querySelector("input.city");
+const addUserFormInputs = addUserForm.querySelectorAll('input')
+const addUserFormButton = addUserForm.querySelector('button')
 
-const tbody = document.querySelector("#tbody");
-const tableRowTemplate = document.querySelector("#table-row").content;
+
 const templateCells = tableRowTemplate.querySelectorAll("td");
 
 const changeUserForm = document.querySelector("#change-user-form");
@@ -14,9 +19,9 @@ const changeInputLastName = changeUserForm.querySelector("input.last-name");
 const changeInputPhone = changeUserForm.querySelector("input.phone");
 const changeInputCity = changeUserForm.querySelector("input.city");
 const changeFormInputs = changeUserForm.querySelectorAll("input");
+const cancelChangeButton = changeUserForm.querySelector(".cancel-button");
+const deletechangeButton = changeUserForm.querySelector(".delete-button");
 
-const addUserFormInputs = addUserForm.querySelectorAll('input')
-const addUserFormButton = addUserForm.querySelector('button')
 const users = {};
 
 class User {
@@ -71,44 +76,50 @@ let selectedRow = null;
 let user = null;
 
 const populateChangeUserForm = (row) => {
-    user = users[row.dataset.userId];
+    user = users[row.dataset.userId]
     const userKeys = Object.keys(user)
-    
-    
+
+
     for (const input of changeFormInputs) {
-         
+
         const inputPropertyKey = input.dataset.inputPropertyKey;
-        for (i=0; i<userKeys.length; i++) {
-            if (userKeys[i] === inputPropertyKey ) {
+        for (i = 0; i < userKeys.length; i++) {
+            if (userKeys[i] === inputPropertyKey) {
                 input.value = user[userKeys[i]]
             }
         }
-           
-            }
-        }
-   
+
+    }
+}
+
 
 tbody.addEventListener("click", (event) => {
     event.preventDefault();
 
     selectedRow = event.target.closest("tr");
+
     populateChangeUserForm(selectedRow)
-    
+
+    selectedRow.classList.add('selected');
     changeUserForm.classList.remove('hidden');
+
     changeUserForm.classList.add('show');
     addUserForm.classList.add('disabled');
-   
-   for (const input of addUserFormInputs) {
-   input.readOnly =true;
-   }
-   addUserFormButton.disabled = true;
-  
+
+    body.classList.add('disabled-background')
+    for (const input of addUserFormInputs) {
+        input.readOnly = true;
+    }
+
+    addUserFormButton.disabled = true;
+    
+
 });
 
 changeUserForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
     const selectedCells = selectedRow.querySelectorAll("td");
-  
+
 
     for (const input of changeFormInputs) {
 
@@ -124,18 +135,67 @@ changeUserForm.addEventListener("submit", (evt) => {
 
         cell.textContent = user[cell.dataset.userPropertyKey]
     }
+    
 
 
-
-
+    selectedRow.classList.remove('selected');
     selectedRow = null;
+
     changeUserForm.classList.add('hidden');
     changeUserForm.classList.remove('show');
     addUserForm.classList.remove('disabled');
+    body.classList.remove('disabled-background')
     for (const input of addUserFormInputs) {
-        input.readOnly =false;
-        }
-        addUserFormButton.disabled = false;
+        input.readOnly = false;
+    }
+    addUserFormButton.disabled = false;
     changeUserForm.reset();
+    alert(`User ( ${user['id']} : ${user['name']} ${user['lastName']} )  was changed`);
+   
 })
 
+
+deletechangeButton.addEventListener('click', () => {
+   let confirmDelete =  confirm('Do you want to delete this user from table?');
+   if (confirmDelete) {
+    selectedRow.remove();
+    confirmDelete = confirm('Do you want to delete this user from data base?');
+    if (confirmDelete) {
+        user = selectedRow.dataset.userId;
+        console.log(user)
+        delete users[user];
+        alert(`User ${user} was deleted from data base.`)
+    }
+ 
+   }
+    
+    selectedRow.classList.remove('selected');
+    selectedRow = null;
+
+    changeUserForm.classList.add('hidden');
+    changeUserForm.classList.remove('show');
+    addUserForm.classList.remove('disabled');
+    body.classList.remove('disabled-background')
+    for (const input of addUserFormInputs) {
+        input.readOnly = false;
+    }
+    addUserFormButton.disabled = false;
+    changeUserForm.reset();
+
+
+})
+
+cancelChangeButton.addEventListener('click', () => {
+    selectedRow.classList.remove('selected');
+    selectedRow = null;
+
+    changeUserForm.classList.add('hidden');
+    changeUserForm.classList.remove('show');
+    addUserForm.classList.remove('disabled');
+    body.classList.remove('disabled-background')
+    for (const input of addUserFormInputs) {
+        input.readOnly = false;
+    }
+    addUserFormButton.disabled = false;
+    changeUserForm.reset();
+})

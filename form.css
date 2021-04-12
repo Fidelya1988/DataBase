@@ -3,7 +3,7 @@ form {
     border: 1px solid black;
     padding: 10px;
     width: 500px;
-    background-color: bisque;
+    background-color: rgb(250, 227, 208);
 }
 
 label {
@@ -22,15 +22,42 @@ label {
      right: 0;
      bottom: 0;
      left: 0;
-     height: 300px;
+     height: 200px;
      margin: auto;
+     
  }
 
  .disabled {
      background-color: rgb(216, 213, 213);
      color: gray;
+     border: 1px solid rgb(180, 180, 180);
      
  }
- .disabled input :hover {
-    border: none; 
+ .disabled input {
+    border: 1px solid rgb(180, 180, 180);
+ }
+
+ button {
+     margin: 20px;
+     background-color: rgb(131, 235, 117);
+     padding: 5px;
+     font-size: 14px;
+     color: rgb(61, 60, 60);
+ }
+
+ .delete-button {
+     background-color: rgb(236, 128, 128);
+ }
+
+
+ .cancel-button {
+    background-color:  rgb(246, 248, 105);
+
+ }
+
+ .show button {
+     margin-top: 30px;
+     margin-left: 10px;
+   
+     
  }
