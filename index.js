@@ -67,7 +67,7 @@ const returnTableState = () => {
     }
     addUserFormButton.disabled = false;
     changeUserForm.reset();
-    alert(`User ( ${user.id} : ${user.name} ${user.lastName} ) was changed`);
+    
 
 }
 
@@ -135,8 +135,9 @@ tbody.addEventListener("click", (event) => {
 
 changeUserForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
+    
     const selectedCells = selectedRow.querySelectorAll("td");
-
+    debugger;
 
     for (const input of changeFormInputs) {
 
@@ -155,13 +156,14 @@ changeUserForm.addEventListener("submit", (evt) => {
 
     returnTableState();
 
+    alert(`User ( ${user.id} : ${user.name} ${user.lastName} ) was changed`);
 
-    
 
 })
 
 
-userDeleteButton.addEventListener('click', () => {
+userDeleteButton.addEventListener('click', (event) => {
+    event.preventDefault();
     const confirmUserRowDelete = confirm('Do you want to delete this user from table?');
     const confirmUserInstanceDelete = confirm('Do you want to delete this user from data base?');
     if (confirmUserRowDelete) {
@@ -177,13 +179,13 @@ userDeleteButton.addEventListener('click', () => {
 
     returnTableState();
 
-  
+
 
 
 })
 
-cancelChangesButton.addEventListener('click', () => {
-    
+cancelChangesButton.addEventListener('click', (event) => {
+    event.preventDefault();
     returnTableState();
-   
+
 })
