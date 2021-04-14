@@ -16,6 +16,7 @@ th {
     /* Поля вокруг содержимого ячеек */
     border: 1px solid black;
     /* Граница вокруг ячеек */
+    width: 20%;
 }
 
 td {
@@ -23,6 +24,7 @@ td {
     /* Поля вокруг содержимого ячеек */
     border: 1px solid black;
     /* Граница вокруг ячеек */
+    width: 20%;
 }
 
 .disabled-background {
@@ -44,3 +46,7 @@ td {
     background-color: rgb(246, 248, 105);
     color: black;
 }
+
+.id {
+     color:rgb(50, 50, 163)
+ }

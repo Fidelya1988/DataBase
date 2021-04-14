@@ -137,7 +137,7 @@ changeUserForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
     
     const selectedCells = selectedRow.querySelectorAll("td");
-    debugger;
+
 
     for (const input of changeFormInputs) {
 
@@ -163,7 +163,7 @@ changeUserForm.addEventListener("submit", (evt) => {
 
 
 userDeleteButton.addEventListener('click', (event) => {
-    event.preventDefault();
+   
     const confirmUserRowDelete = confirm('Do you want to delete this user from table?');
     const confirmUserInstanceDelete = confirm('Do you want to delete this user from data base?');
     if (confirmUserRowDelete) {
@@ -185,7 +185,7 @@ userDeleteButton.addEventListener('click', (event) => {
 })
 
 cancelChangesButton.addEventListener('click', (event) => {
-    event.preventDefault();
+   
     returnTableState();
 
 })
