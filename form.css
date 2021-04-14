@@ -37,6 +37,10 @@ label {
     border: 1px solid rgb(180, 180, 180);
  }
 
+ .disabled button {
+    background-color: rgb(215, 219, 214);
+ }
+
  button {
      margin: 20px;
      background-color: rgb(131, 235, 117);

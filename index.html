@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <form id="add-user-form" >
+    <form id="add-user-form">
         <label>
             Name:
-            <input type="text" name="name" class="name" >
+            <input type="text" name="name" class="name">
         </label>
         <label>
             Last Name:
@@ -27,9 +27,9 @@
             City:
             <input type="text" name="city" class="city">
         </label>
-        <button type="submit">Add New User</button>
+        <button type="submit" class= "add-user-button">Add New User</button>
     </form>
-   
+
     <form id="change-user-form" class="hidden">
         <label>
             Name:
@@ -37,7 +37,7 @@
         </label>
         <label>
             Last Name:
-            <input type="text" name="last-name" class="last-name" data-input-property-key="lastName"> 
+            <input type="text" name="last-name" class="last-name" data-input-property-key="lastName">
         </label>
         <label>
             Phone Number:
@@ -47,15 +47,15 @@
             City:
             <input type="text" name="city" class="city" data-input-property-key="city">
         </label>
-        <button type="submit" class = "change-button">Save changes</button>
-        <button type="click" class = "delete-button">Delete user</button>
-        <button type="click" class = "cancel-button">Cancel</button>
-       
+        <button type="submit" class="change-button">Save changes</button>
+        <button class="delete-button">Delete user</button>
+        <button class="cancel-button">Cancel</button>
+
     </form>
     <table>
         <thead>
             <tr>
-                
+
                 <th>Name</th>
                 <th>Last Name</th>
                 <th>Phone Number</th>
@@ -70,7 +70,7 @@
 
     <template id="table-row">
         <tr class="user-row">
-            
+
             <td class="name" data-user-property-key="name">Test User</td>
             <td class="last-name" data-user-property-key="lastName">М</td>
             <td class="phone" data-user-property-key="phone">3333333333</td>
@@ -81,6 +81,7 @@
 
     <script src="http://code.jquery.com/jquery-2.1.0.js"></script>
     <script src="index.js"></script>
-   
+
 </body>
+
 </html>

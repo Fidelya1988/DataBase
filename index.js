@@ -8,7 +8,7 @@ const inputLastName = addUserForm.querySelector("input.last-name");
 const inputPhone = addUserForm.querySelector("input.phone");
 const inputCity = addUserForm.querySelector("input.city");
 const addUserFormInputs = addUserForm.querySelectorAll('input')
-const addUserFormButton = addUserForm.querySelector('button')
+const addUserFormButton = addUserForm.querySelector('.add-user-button')
 
 
 const templateCells = tableRowTemplate.querySelectorAll("td");
@@ -19,11 +19,12 @@ const changeInputLastName = changeUserForm.querySelector("input.last-name");
 const changeInputPhone = changeUserForm.querySelector("input.phone");
 const changeInputCity = changeUserForm.querySelector("input.city");
 const changeFormInputs = changeUserForm.querySelectorAll("input");
-const cancelChangeButton = changeUserForm.querySelector(".cancel-button");
-const deletechangeButton = changeUserForm.querySelector(".delete-button");
+const cancelChangesButton = changeUserForm.querySelector(".cancel-button");
+const userDeleteButton = changeUserForm.querySelector(".delete-button");
 
 const users = {};
-
+let selectedRow = null;
+let user = null;
 class User {
     static createID() {
         return Math.random().toString().substr(2, 10);
@@ -53,6 +54,23 @@ const createRow = (newUser) => {
     return row;
 };
 
+const returnTableState = () => {
+    selectedRow.classList.remove('selected');
+    selectedRow = null;
+
+    changeUserForm.classList.add('hidden');
+    changeUserForm.classList.remove('show');
+    addUserForm.classList.remove('disabled');
+    body.classList.remove('disabled-background')
+    for (const input of addUserFormInputs) {
+        input.readOnly = false;
+    }
+    addUserFormButton.disabled = false;
+    changeUserForm.reset();
+    alert(`User ( ${user.id} : ${user.name} ${user.lastName} ) was changed`);
+
+}
+
 addUserForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
@@ -72,8 +90,7 @@ addUserForm.addEventListener("submit", (evt) => {
     addUserForm.reset();
 });
 
-let selectedRow = null;
-let user = null;
+
 
 const populateChangeUserForm = (row) => {
     user = users[row.dataset.userId]
@@ -112,7 +129,7 @@ tbody.addEventListener("click", (event) => {
     }
 
     addUserFormButton.disabled = true;
-    
+
 
 });
 
@@ -135,67 +152,38 @@ changeUserForm.addEventListener("submit", (evt) => {
 
         cell.textContent = user[cell.dataset.userPropertyKey]
     }
+
+    returnTableState();
+
+
     
 
-
-    selectedRow.classList.remove('selected');
-    selectedRow = null;
-
-    changeUserForm.classList.add('hidden');
-    changeUserForm.classList.remove('show');
-    addUserForm.classList.remove('disabled');
-    body.classList.remove('disabled-background')
-    for (const input of addUserFormInputs) {
-        input.readOnly = false;
-    }
-    addUserFormButton.disabled = false;
-    changeUserForm.reset();
-    alert(`User ( ${user['id']} : ${user['name']} ${user['lastName']} )  was changed`);
-   
 })
 
 
-deletechangeButton.addEventListener('click', () => {
-   let confirmDelete =  confirm('Do you want to delete this user from table?');
-   if (confirmDelete) {
-    selectedRow.remove();
-    confirmDelete = confirm('Do you want to delete this user from data base?');
-    if (confirmDelete) {
+userDeleteButton.addEventListener('click', () => {
+    const confirmUserRowDelete = confirm('Do you want to delete this user from table?');
+    const confirmUserInstanceDelete = confirm('Do you want to delete this user from data base?');
+    if (confirmUserRowDelete) {
+        selectedRow.remove();
+    }
+
+    if (confirmUserInstanceDelete) {
         user = selectedRow.dataset.userId;
-        console.log(user)
+
         delete users[user];
         alert(`User ${user} was deleted from data base.`)
     }
- 
-   }
-    
-    selectedRow.classList.remove('selected');
-    selectedRow = null;
 
-    changeUserForm.classList.add('hidden');
-    changeUserForm.classList.remove('show');
-    addUserForm.classList.remove('disabled');
-    body.classList.remove('disabled-background')
-    for (const input of addUserFormInputs) {
-        input.readOnly = false;
-    }
-    addUserFormButton.disabled = false;
-    changeUserForm.reset();
+    returnTableState();
+
+  
 
 
 })
 
-cancelChangeButton.addEventListener('click', () => {
-    selectedRow.classList.remove('selected');
-    selectedRow = null;
-
-    changeUserForm.classList.add('hidden');
-    changeUserForm.classList.remove('show');
-    addUserForm.classList.remove('disabled');
-    body.classList.remove('disabled-background')
-    for (const input of addUserFormInputs) {
-        input.readOnly = false;
-    }
-    addUserFormButton.disabled = false;
-    changeUserForm.reset();
+cancelChangesButton.addEventListener('click', () => {
+    
+    returnTableState();
+   
 })
